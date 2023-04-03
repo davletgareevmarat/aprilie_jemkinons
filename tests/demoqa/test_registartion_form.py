@@ -15,7 +15,7 @@ def test_successful():
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": "100.0",
-        "selenoid:options": {"enableVNC": True, "enableVideo": False},
+        "selenoid:options": {"enableVNC": True, "enableVideo": True},
     }
     options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(
