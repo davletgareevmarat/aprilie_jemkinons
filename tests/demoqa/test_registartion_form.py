@@ -4,7 +4,7 @@ from selene.support.shared import browser
 
 from utils import attach
 
-browser.open("https://demoqa.com/automation-practice-form")
+# browser.open("https://demoqa.com/automation-practice-form")
 
 
 @allure.title("Successful fill form")
@@ -15,7 +15,7 @@ def test_successful():
     last_name = "Egorov"
 
     with allure.step("Open registrations form"):
-        # browser.open("https://demoqa.com/automation-practice-form")
+        browser.open("https://demoqa.com/automation-practice-form")
         browser.element(".practice-form-wrapper").should(
             have.text("Student Registration Form")
         )
