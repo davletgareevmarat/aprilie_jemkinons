@@ -6,11 +6,28 @@ from selene import Browser, Config
 from utils import attach
 
 
+def pytest_addoption(parser):
+    # parser.addoption(
+    #     "--browser",
+    #     help="Браузер, в котором будут запущены тесты",
+    #     choices=["firefox", "chrome"],
+    #     default="chrome",
+    # )
+    parser.addoption(
+        "--browser",
+        help="Браузер, в котором будут запущены тесты",
+        choices=["firefox", "chrome"],
+        default="chrome",
+    )
+
+
+
 @pytest.fixture(scope="function")
-def setup_chrome():
+def setup_browser(request):
+    browser_name = request.config.getoption("--browser")
     options = Options()
     selenoid_capabilities = {
-        "browserName": "chrome",
+        "browserName": browser_name,
         "browserVersion": "100.0",
         "selenoid:options": {"enableVNC": True, "enableVideo": True},
     }
@@ -27,4 +44,3 @@ def setup_chrome():
     attach.add_logs(browser)
     attach.add_html(browser)
     attach.add_video(browser)
-

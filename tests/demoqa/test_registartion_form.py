@@ -9,8 +9,8 @@ from utils import attach
 
 
 @allure.title("Successful fill form")
-def test_successful(setup_chrome):
-    browser = setup_chrome
+def test_successful(setup_browser):
+    browser = setup_browser
     # options = Options()
     # selenoid_capabilities = {
     #     "browserName": "chrome",
