@@ -7,19 +7,12 @@ from utils import attach
 
 
 def pytest_addoption(parser):
-    # parser.addoption(
-    #     "--browser",
-    #     help="Браузер, в котором будут запущены тесты",
-    #     choices=["firefox", "chrome"],
-    #     default="chrome",
-    # )
     parser.addoption(
         "--browser",
         help="Браузер, в котором будут запущены тесты",
         choices=["firefox", "chrome"],
         default="chrome",
     )
-
 
 
 @pytest.fixture(scope="function")
@@ -44,3 +37,4 @@ def setup_browser(request):
     attach.add_logs(browser)
     attach.add_html(browser)
     attach.add_video(browser)
+    browser.quit()
