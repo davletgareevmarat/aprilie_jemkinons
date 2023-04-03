@@ -8,20 +8,24 @@ from utils import attach
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--browser",
-        help="Браузер, в котором будут запущены тесты",
-        choices=["firefox", "chrome"],
-        default="chrome",
+        "--browser_version",
+        default="100.0",
     )
+    # parser.addoption(
+    #     "--browser",
+    #     help="Браузер, в котором будут запущены тесты",
+    #     choices=["firefox", "chrome"],
+    #     default="chrome",
+    # )
 
 
 @pytest.fixture(scope="function")
 def setup_browser(request):
-    browser_name = request.config.getoption("--browser")
+    browser_version = request.config.getoption("--browser_version")
     options = Options()
     selenoid_capabilities = {
-        "browserName": browser_name,
-        "browserVersion": "100.0",
+        "browserName": "chrome",
+        "browserVersion": browser_version,
         "selenoid:options": {"enableVNC": True, "enableVideo": True},
     }
     options.capabilities.update(selenoid_capabilities)
