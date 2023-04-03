@@ -1,6 +1,5 @@
 import allure
 from allure_commons.types import AttachmentType
-from selene.support.shared import browser
 
 
 def add_screenshot(browser):
