@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 from utils import attach
 
+from selenium.webdriver.common.by import By
 
 DEFAULT_BROWSER_VERSION = "100.0"
 
